@@ -3,9 +3,10 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Hoeme</h1>
-      <Counter />
+    <div className="flex gap-6">
+      <div className="hidden xl:block w-[20%]"></div>
+      <div className="w-full lg:w-[70%] xl:w-[50%]"></div>
+      <div className="hidden lg:block w-[30%]"></div>
     </div>
   );
 };
