@@ -2,6 +2,15 @@ import Link from "next/link";
 import React from "react";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import Spinner from "./Spinner";
+import { Sign } from "crypto";
 
 const Navbar = () => {
   return (
@@ -49,6 +58,41 @@ const Navbar = () => {
       </div>
       {/* RIGHT */}
       <div className="w-[30%] flex items-center xl:gap-8 gap-4 justify-end">
+        <ClerkLoading>
+          <Spinner />
+        </ClerkLoading>
+        <ClerkLoaded>
+          <SignedIn>
+            <div className="flex items-center text-sm gap-4 text-gray-500">
+              <div className="cursor-pointer">
+                <Image src="/people.png" width={24} height={24} alt="Profile" />
+              </div>
+              <div className="cursor-pointer">
+                <Image
+                  src="/messages.png"
+                  width={24}
+                  height={24}
+                  alt="Profile"
+                />
+              </div>
+              <div className="cursor-pointer">
+                <Image
+                  src="/notifications.png"
+                  width={24}
+                  height={24}
+                  alt="Profile"
+                />
+              </div>
+              <UserButton />
+            </div>
+          </SignedIn>
+          <SignedOut>
+            <div className="flex items-center text-sm gap-4 text-gray-500">
+              <Image src="/noAvatar.png" width={24} height={24} alt="Profile" />
+              <Link href="/sign-in">Login | Register</Link>
+            </div>
+          </SignedOut>
+        </ClerkLoaded>
         <MobileMenu />
       </div>
     </div>
