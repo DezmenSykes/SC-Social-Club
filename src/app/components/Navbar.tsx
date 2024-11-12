@@ -55,7 +55,7 @@ const Navbar = () => {
             <span>Stories</span>
           </Link>
         </div>
-        <div className="hidden xl:flex p-2 bg-slate-100 items-center ">
+        <div className="hidden xl:flex p-2 bg-slate-100 items-center rounded-xl">
           <input
             type="text"
             placeholder="Search"
