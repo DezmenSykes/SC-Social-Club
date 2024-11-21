@@ -2,7 +2,7 @@ import React from "react";
 import ProfileCard from "./ProfileCard";
 import Link from "next/link";
 import Image from "next/image";
-import Ads from "./Ads";
+import Ads from "../Ads";
 
 const LeftMenu = ({ type }: { type: "home" | "profile" }) => {
   return (

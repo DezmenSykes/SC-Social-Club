@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import FriendRequests from "./FriendRequests";
 import BirthDays from "./BirthDays";
-import Ads from "./Ads";
+import Ads from "../Ads";
 import UserInfoCard from "./UserInfoCard";
 import UserMediaCard from "./UserMediaCard";
 import { User } from "@prisma/client";
@@ -14,7 +14,9 @@ const RightMenu = ({ user }: { user: User }) => {
           <Suspense fallback={<div>Loading...</div>}>
             <UserInfoCard user={user} />
           </Suspense>
-          <UserMediaCard user={user} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <UserMediaCard user={user} />
+          </Suspense>
         </>
       ) : null}
       <FriendRequests />
