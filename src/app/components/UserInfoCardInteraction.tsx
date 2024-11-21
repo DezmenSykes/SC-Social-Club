@@ -16,14 +16,18 @@ const UserInfoCardInteraction = ({
   userId,
 }: UserInfoCardInteraction) => {
   return (
-    <div className="flex flex-col gap-3">
-      <button className="w-full bg-blue-500 text-white text-sm rounded-md p-2">
-        {isFollowing ? "Following" : isFollowSent ? "Request Sent" : "Follow"}
-      </button>
-      <span className="text-red-400 flex self-end text-xs cursor-pointer">
-        {isUserBlocked ? "Unblock" : "Block"}
-      </span>
-    </div>
+    <>
+      <form action="" className="" method="post">
+        <button className="w-full bg-blue-500 text-white text-sm rounded-md p-2">
+          {isFollowing ? "Following" : isFollowSent ? "Request Sent" : "Follow"}
+        </button>
+      </form>
+      <form action="" className="self-end">
+        <span className="text-red-400 self-end text-xs cursor-pointer">
+          {isUserBlocked ? "Unblock" : "Block"}
+        </span>
+      </form>
+    </>
   );
 };
 
