@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface UserInfoCardInteraction {
   currentUserId: string | null;
@@ -15,16 +15,25 @@ const UserInfoCardInteraction = ({
   isUserBlocked,
   userId,
 }: UserInfoCardInteraction) => {
+  const [userState, setUserState] = useState({
+    following: isFollowing,
+    blocked: isUserBlocked,
+    followRequestSent: isFollowSent,
+  });
   return (
     <>
       <form action="" className="" method="post">
         <button className="w-full bg-blue-500 text-white text-sm rounded-md p-2">
-          {isFollowing ? "Following" : isFollowSent ? "Request Sent" : "Follow"}
+          {userState.following
+            ? "Following"
+            : userState.followRequestSent
+            ? "Request Sent"
+            : "Follow"}
         </button>
       </form>
       <form action="" className="self-end">
         <span className="text-red-400 self-end text-xs cursor-pointer">
-          {isUserBlocked ? "Unblock" : "Block"}
+          {userState.blocked ? "Unblock" : "Block"}
         </span>
       </form>
     </>
