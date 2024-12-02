@@ -1,3 +1,4 @@
+import { switchFollow } from "@/lib/actions";
 import React, { useState } from "react";
 
 interface UserInfoCardInteraction {
@@ -20,6 +21,18 @@ const UserInfoCardInteraction = ({
     blocked: isUserBlocked,
     followRequestSent: isFollowSent,
   });
+
+  const follow = async () => {
+    try {
+      await switchFollow(userId);
+      setUserState((prev) => ({
+        ...prev,
+        following: prev.following && false,
+        followRequestSent:
+          !prev.followRequestSent && !prev.following ? true : false,
+      }));
+    } catch (error) {}
+  };
   return (
     <>
       <form action="" className="" method="post">
